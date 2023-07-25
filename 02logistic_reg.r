@@ -1,0 +1,11 @@
+df <- read.csv("C:\Users\tp362\OneDrive\Desktop\machinelearning\pract\mlbinary.csv")
+str(df)
+sum(is.na(df))
+summary(df)
+xtabs(~ admit +rank ,data=df) 
+df$rank <- as.factor(df$rank)
+logit <- glm(admit ~ gre+gpa+rank,data=df,family="binomial")
+summary(logit)
+x <- data.frame(gre=790,gpa=3.8,rank=as.factor(1))
+p<- predict(logit,x)
+p
